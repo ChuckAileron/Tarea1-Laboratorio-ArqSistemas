@@ -1,0 +1,38 @@
+<h1>Perfil clase</h1>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @clase.nombre %>
+</p>
+ 
+<p>
+  <strong>Periodo:</strong>
+  <%= @clase.periodo %>
+</p>
+    
+<p>
+  <strong>Profesor:</strong>
+  <%= @clase.profesor.nombre %>
+</p>
+    
+<h2>Foro</h2>
+<% @clase.comentarios.each do |comentario| %>
+  <p>
+    <strong>Comentario:</strong>
+    <%= comentario.texto %>
+  </p>
+<% end %>
+ 
+<h2>Añadir un comentario:</h2>
+<%= form_with(model: [ @clase, @clase.comentarios.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :texto %><br>
+    <%= form.text_area :texto %>
+  </p>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+ 
+<%= link_to 'Editar', edit_clase_path(@clase) %> |
+<%= link_to 'Volver', clases_path %>

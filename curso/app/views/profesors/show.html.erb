@@ -1,0 +1,61 @@
+<h1>Perfil Profesor</h1>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @profesor.nombre %>
+</p>
+ 
+<p>
+  <strong>RUT:</strong>
+  <%= @profesor.rut %>
+</p>
+    
+<p>
+  <strong>E-Mail:</strong>
+  <%= @profesor.email %>
+</p>
+	
+<h2>Asignaturas impartidas</h2>
+  <% @profesor.clases.each do |profe| %>
+    <p>
+      <strong>Nombre Asignatura:</strong>
+      <%= profe.nombre %>
+    </p>
+ 
+    <p>
+      <strong>Periodo:</strong>
+      <%= profe.periodo %>
+    </p>
+<% end %>
+
+<h2>Evaluaciones</h2>
+  <% @profesor.evaluacions.each do |profe| %>
+    <p>
+      <strong>Comentario:</strong>
+      <%= profe.comentario %>
+    </p>
+ 
+    <p>
+      <strong>Calificación:</strong>
+      <%= profe.nota %>
+    </p>
+<% end %>
+        
+<h2>Agregar una evaluación:</h2>
+  <%= form_with(model: [ @profesor, @profesor.evaluacions.build ], local: true) do |form| %>
+    <p>
+      <%= form.label :"Comentario" %><br>
+      <%= form.text_area :comentario %>
+    </p>
+    <p>
+      <%= form.label :"Calificación" %><br>
+      <%= form.select(:nota, Evaluacion::NOTAS_LIST) %>
+    </p>
+    <p>
+      <%= form.submit "Agregar" %>
+    </p>
+<% end %>
+
+ 
+<%= link_to 'Editar', edit_profesor_path(@profesor) %> |
+<%= link_to 'Volver', profesors_path %>

@@ -1,0 +1,24 @@
+<h1>Listado de Alumnos</h1>
+
+<table>
+  <tr>
+	<th>ID_Alumno</th>
+    <th>Nombre</th>
+    <th></th>
+  </tr>
+
+  <% @alumnos.each do |alumno| %>
+    <tr>
+      <td><%= alumno.id %></td>
+      <td><%= alumno.nombre %></td>
+      <td><%= link_to 'Ver', alumno_path(alumno) %></td>
+      <td><%= link_to 'Editar', edit_alumno_path(alumno) %></td>
+      <td><%= link_to 'Eliminar', alumno_path(alumno),
+              method: :delete,
+              data: { confirm: '¿Está seguro?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+<%= link_to 'Agregar nuevo alumno', new_alumno_path %> | 
+<%= link_to "Volver al inicio", root_path %>

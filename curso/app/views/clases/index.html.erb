@@ -1,0 +1,24 @@
+<h1>Listado de clases</h1>
+
+<table>
+  <tr>
+	<th>ID_Clase</th>
+    <th>Nombre</th>
+    <th></th>
+  </tr>
+
+  <% @clases.each do |clase| %>
+    <tr>
+      <td><%= clase.id %></td>
+      <td><%= clase.nombre %></td>
+      <td><%= link_to 'Ver', clase_path(clase) %></td>
+      <td><%= link_to 'Editar', edit_clase_path(clase) %></td>
+      <td><%= link_to 'Eliminar', clase_path(clase),
+              method: :delete,
+              data: { confirm: '¿Está seguro?' } %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+<%= link_to 'Agregar nuevo clase', new_clase_path %> | 
+<%= link_to "Volver al inicio", root_path %>

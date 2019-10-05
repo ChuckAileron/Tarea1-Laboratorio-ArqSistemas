@@ -1,0 +1,21 @@
+<h1>Listado de Alumnos/Clases</h1>
+
+<table>
+  <tr>
+	<th>ID</th>
+    <th>ID_Alumno</th>
+    <th>ID_Clase</th>
+    <th></th>
+  </tr>
+
+  <% @alumno_clases.each do |alumno| %>
+    <tr>
+      <td><%= alumno_clase.id %></td>
+      <td><%= alumno_clase.alumno_id %></td>
+      <td><%= alumno_clase.clase_id %></td>
+    </tr>
+  <% end %>
+</table>
+<br/>
+
+<%= link_to "Volver al inicio", root_path %>

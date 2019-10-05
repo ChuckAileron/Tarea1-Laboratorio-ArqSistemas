@@ -1,0 +1,42 @@
+<h1>Perfil Alumno</h1>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @alumno.nombre %>
+</p>
+ 
+<p>
+  <strong>RUT:</strong>
+  <%= @alumno.rut %>
+</p>
+
+<h2>Ramos inscritos</h2>
+  <% @alumno.alumno_clases.each do |alumnoclase| %>
+    <p>
+      <strong>Nombre Asignatura:</strong>
+      <%= alumnoclase.clase.nombre %>
+    </p>
+ 
+    <p>
+      <strong>Periodo:</strong>
+      <%= alumnoclase.clase.periodo %>
+    </p>
+<% end %>
+        
+<h2>Agregar una clase:</h2>
+  <%= form_with(model: [ @alumno, @alumno.alumno_clases.build ], local: true) do |form| %>
+    <p>
+      <%= form.label :"ID Alumno" %><br>
+      <%= form.text_field :alumno_id %>
+    </p>
+    <p>
+      <%= form.label :"ID Clase" %><br>
+      <%= form.text_field :clase_id %>
+    </p>
+    <p>
+      <%= form.submit "Agregar Clase" %>
+    </p>
+<% end %>
+
+<%= link_to 'Editar', edit_alumno_path(@alumno) %> |
+<%= link_to 'Volver', alumnos_path %>
