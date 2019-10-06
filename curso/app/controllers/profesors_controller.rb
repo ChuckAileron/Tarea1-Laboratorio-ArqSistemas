@@ -44,7 +44,7 @@ class ProfesorsController < ApplicationController
 
   private
     def profesor_params
-      params.require(:profesor).permit(:nombre, :rut, :email)
+      params.require(:profesor).permit(:nombre, :rut, :correo)
     end
 
 end
