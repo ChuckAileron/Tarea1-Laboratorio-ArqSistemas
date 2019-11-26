@@ -1,0 +1,49 @@
+ALUMNOS
+
+	Tiene muchas clases
+	
+	rails generate model Alumno nombre:string rut:string correo:string
+	rails generate controller Alumnos
+	
+
+PROFESORES
+
+	Tiene una o más clases
+	Tiene una o más evaluaciones
+	
+	rails generate model Profesor nombre:string rut:string correo:string calificacion:float
+	rails generate controller Profesors
+
+
+CLASES
+
+	Tiene muchos comentarios
+	Tiene muchos alumnos
+	Tiene un profesor
+	
+	rails generate model Clase nombre:string periodo:integer profesor:references
+	rails generate controller Clases
+
+	
+ALUMNOCLASE
+
+	Tabla intermedia para Has Many Through
+	
+	rails generate model AlumnoClase alumno_id:integer clase_id:integer
+	rails generate controller AlumnoClases
+
+
+EVALUACIONES
+
+	Tiene un sólo profesor
+	
+	rails generate model Evaluacion nota:integer comentario:text profesor:references
+	rails generate controller Evaluacions
+	
+	
+COMENTARIOS
+	
+	Tiene una sóla clase
+	
+	rails generate model Comentario texto:text clase:references
+	rails generate controller Comentarios
